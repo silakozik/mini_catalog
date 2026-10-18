@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'routes.dart';
 import 'screens/home_screen.dart';
+import 'screens/product_detail_screen.dart';
 
 void main() {
   runApp(const MiniKatalogApp());
@@ -18,7 +20,11 @@ class MiniKatalogApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue),
         scaffoldBackgroundColor: Colors.white,
       ),
-      home: const HomeScreen(),
+      initialRoute: AppRoutes.home,
+      routes: {
+        AppRoutes.home: (context) => const HomeScreen(),
+        AppRoutes.detail: (context) => const ProductDetailScreen(),
+      },
     );
   }
 }

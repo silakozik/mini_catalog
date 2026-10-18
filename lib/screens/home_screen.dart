@@ -1,3 +1,4 @@
+import '../routes.dart';
 import 'package:flutter/material.dart';
 import '../data/product_repository.dart';
 import '../models/product.dart';
@@ -79,13 +80,11 @@ class _HomeScreenState extends State<HomeScreen> {
                         return ProductCard(
                           product: product,
                           onTap: () {
-                            // Aşama 5'te burası detay sayfasına geçişe dönüşecek
-                            ScaffoldMessenger.of(context).showSnackBar(
-                              SnackBar(
-                                content: Text('${product.name} seçildi'),
-                                duration: const Duration(seconds: 1),
-                              ),
-                            );
+                            Navigator.pushNamed(
+                              context,
+                              AppRoutes.detail,
+                              arguments: product, // Route Arguments: ürünü detay sayfasına taşır
+                            );                        
                           },
                         );
                       },
