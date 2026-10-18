@@ -1,3 +1,5 @@
+import '../models/cart_model.dart';
+import '../routes.dart';
 import 'package:flutter/material.dart';
 import '../models/product.dart';
 
@@ -87,15 +89,20 @@ class ProductDetailScreen extends StatelessWidget {
             height: 52,
             child: FilledButton(
               onPressed: () {
-                // Sepet Aşama 6'da bağlanacak
+                cart.add(product);
+                ScaffoldMessenger.of(context).hideCurrentSnackBar();
                 ScaffoldMessenger.of(context).showSnackBar(
                   SnackBar(
-                    content: Text('${product.name} sepete eklenecek'),
-                    duration: const Duration(seconds: 1),
+                    content: Text('${product.name} sepete eklendi'),
+                    duration: const Duration(seconds: 2),
+                    action: SnackBarAction(
+                      label: 'Sepeti Gör',
+                      onPressed: () => Navigator.pushNamed(context, AppRoutes.cart),
+                    ),
                   ),
                 );
               },
-              child: const Text('Sepete Ekle'),
+                        child: const Text('Sepete Ekle'),
             ),
           ),
         ),

@@ -1,3 +1,4 @@
+import '../models/cart_model.dart';
 import '../routes.dart';
 import 'package:flutter/material.dart';
 import '../data/product_repository.dart';
@@ -116,10 +117,19 @@ class _HomeScreenState extends State<HomeScreen> {
             ],
           ),
         ),
-        // Sepet Aşama 6'da bağlanacak
-        IconButton(
-          onPressed: () {},
-          icon: const Icon(Icons.shopping_bag_outlined),
+        // Sepet değişince rozet otomatik güncellenir
+        ListenableBuilder(
+          listenable: cart,
+          builder: (context, _) {
+            return IconButton(
+              onPressed: () => Navigator.pushNamed(context, AppRoutes.cart),
+              icon: Badge(
+                label: Text('${cart.totalCount}'),
+                isLabelVisible: cart.totalCount > 0,
+                child: const Icon(Icons.shopping_bag_outlined),
+              ),
+            );
+          },
         ),
       ],
     );
