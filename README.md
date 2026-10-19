@@ -45,7 +45,7 @@ screenshots/  Uygulama ekran görüntüleri
 1. Flutter SDK 3.44.4 ve Android Studio (emülatör için) kurulu olmalıdır.
 2. Projeyi klonlayın:
 ```
-   git clone https://github.com/silakozik/mini_katalog.git
+   git clone https://github.com/silakozik/mini_catalog.git
    cd mini_katalog
 ```
 3. Bağımlılıkları yükleyin:
